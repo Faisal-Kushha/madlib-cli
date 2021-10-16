@@ -22,7 +22,7 @@ def parse_template(text):
     """
     parse_text = re.findall(r'\{(.*?)\}', text)
     for i in parse_text:
-        text = text.replace((i), "", 1)
+        text = str(text).replace((i), "", 1)
     return text, tuple(parse_text)
 
 
@@ -30,7 +30,7 @@ def merge(text, parse_text):
     """
     A function that will merge the user inputs with the text by using the format method.
     """
-    new_text = text.format(*parse_text)
+    new_text = str(text).format(*parse_text)
     with open('../assets/test.txt', 'w') as output:
         output.write(new_text)
     return new_text
